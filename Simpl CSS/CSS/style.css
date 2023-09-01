@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+body{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    
+}
+ul{
+display: flex;
+border-bottom: 14px solid blue;
+border-radius: 10px;
+    
+}
+ul li{
+    width: 40px;
+    height: 40px;
+    list-style: none;
+    background-color: royalblue;
+    margin: auto 20px;
+    border-radius: 50%;
+    animation: bouncing 1s linear infinite;
+}
+
+@keyframes bouncing {
+    
+    0%{
+        transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-150px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+
+ul li:nth-child(2){
+    animation-delay: .2s;
+}
+ul li:nth-child(3){
+    animation-delay: .4s;
+}
+ul li:nth-child(4){
+    animation-delay: .6s;
+}
+ul li:nth-child(5){
+    animation-delay: .8s;
+}
+
+

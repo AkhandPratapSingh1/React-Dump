@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Image Generator</title>
+  <style>
+    #generated-image {
+      display: block;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>AI Image Generator</h1>
+  <canvas id="generated-image" width="280" height="280"></canvas>
+
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.9.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet@2.1.0"></script>
+  <script>
+    async function generateImage() {
+      const generator = tf.sequential();
+      generator.add(tf.layers.dense({ units: 256, inputShape: [100], activation: 'relu' }));
+      generator.add(tf.layers.dense({ units: 784, activation: 'sigmoid' }));
+      generator.add(tf.layers.reshape({ targetShape: [28, 28, 1] }));
+
+      const randomInput = tf.randomNormal([1, 100]);
+      const generatedImage = generator.predict(randomInput);
+
+      const canvas = document.getElementById('generated-image');
+      const ctx = canvas.getContext('2d');
+      const imageData = new ImageData(
+        new Uint8ClampedArray(generatedImage.dataSync()),
+        generatedImage.shape[1],
+        generatedImage.shape[2]
+      );
+      ctx.putImageData(imageData, 0, 0);
+
+      generator.dispose();
+      generatedImage.dispose();
+    }
+
+    generateImage();
+  </script>
+</body>
+</html>

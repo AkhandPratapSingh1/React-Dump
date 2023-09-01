@@ -1,0 +1,21 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        const stdarr = [{rollno:1, name:'akhand',marks:10},{rollno:2, name:'pratap',marks:110},{rollno:1, name:'singh',marks:200}];
+        const newstd = stdarr.map( (newstdval) => {return `${newstdval.marks}`;});
+        
+        document.getElementById('stdtbl').innerHTML = newstd;
+
+        </script>
+</head>
+<body>
+    <p id="stdtbl"></p>
+    
+</body>
+</html>

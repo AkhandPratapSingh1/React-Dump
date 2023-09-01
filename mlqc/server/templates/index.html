@@ -1,0 +1,13 @@
+<ul>
+    {% for case in data %}
+      <li>
+        Case ID: {{ case[0] }}<br>
+        Name: {{ case[1] }}<br>
+        Inserted Date: {{ case[2] }}<br>
+        Status: {{ case[3] }}<br>
+        <a href="{{ url_for('case_detail', case_id=case[0]) }}">View Details</a>
+        <a href="{{ url_for('approve_case', case_id=case[0]) }}">Approve</a>
+      </li>
+    {% endfor %}
+  </ul>
+  
